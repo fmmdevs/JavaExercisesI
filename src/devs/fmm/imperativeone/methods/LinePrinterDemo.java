@@ -1,6 +1,4 @@
-package devs.fmm.imperativeone.methods.drawinghearts;
-
-import javax.sound.sampled.Line;
+package devs.fmm.imperativeone.methods;
 
 public class LinePrinterDemo {
     public static void main(String[] args) {

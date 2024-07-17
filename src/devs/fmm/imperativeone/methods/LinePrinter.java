@@ -1,4 +1,4 @@
-package devs.fmm.imperativeone.methods.drawinghearts;
+package devs.fmm.imperativeone.methods;
 
 public class LinePrinter {
     public static void line() {
