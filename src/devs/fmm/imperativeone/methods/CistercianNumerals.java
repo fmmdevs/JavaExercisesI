@@ -121,7 +121,7 @@ public class CistercianNumerals {
             digit = (int) Math.floor((double) number / 10);
             rest = number % 10;
 
-            tens = generateSvg( tens(digits[digit - 1]));
+            tens = generateSvg(tens(digits[digit - 1]));
             number = rest;
         }
 
@@ -142,5 +142,8 @@ public class CistercianNumerals {
 
         System.out.println(cisterianNumber);
 
+
     }
+
+
 }
