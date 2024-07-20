@@ -10,12 +10,52 @@ public class BermudaTriangle {
 
         // m = (y2-y1)/(x2-x1)
 
-        double m = (lineP2.y - lineP1.y) / (lineP2.x - lineP2.x);
+        double m = ((double) lineP2.y - lineP1.y) / ((double) lineP2.x - lineP2.x);
 
         //b = y-mx;
         double b = lineP1.y - m * lineP1.x;
 
         return point.y == m * point.x + b;
+    }
+
+    static Polygon resetWithRandomTriangle(Polygon polygon, int min, int max){
+        // Reset Polygon
+        polygon.reset();
+
+        double f;
+        int x , y;
+
+        for(int i = 0; i<3; i++){
+            // Random x between [mix,max]
+            f = Math.random() / Math.nextDown(1.0);
+            x =(int) Math.round(min * (1.0 - f) + max * f);
+
+            // Random y between [mix,max]
+            f= Math.random()/Math.nextDown(1.0);
+            y =(int) Math.round(min * (1.0 - f) + max * f);
+            polygon.addPoint(x,y);
+        }
+
+        return polygon;
+    }
+
+    // min and max for coordinates
+    static Polygon createRandomTriangle(int min, int max) {
+        Polygon triangle = new Polygon();
+        double f;
+        int x,y;
+
+        for(int i = 0; i<3; i++){
+            // Random x between [mix,max]
+            f = Math.random() / Math.nextDown(1.0);
+            x =(int) Math.round(min * (1.0 - f) + max * f);
+
+            // Random y between [mix,max]
+            f= Math.random()/Math.nextDown(1.0);
+            y =(int) Math.round(min * (1.0 - f) + max * f);
+            triangle.addPoint(x,y);
+        }
+        return triangle;
     }
 
     public static void main(String[] args) {
@@ -51,6 +91,8 @@ public class BermudaTriangle {
         polygon.addPoint(p2.x, p2.y);
         polygon.addPoint(p3.x, p3.y);
 
+
+        resetWithRandomTriangle(polygon,0,49);
 
         System.out.println("Enter ship's position x");
         int xShip = sc.nextInt();
