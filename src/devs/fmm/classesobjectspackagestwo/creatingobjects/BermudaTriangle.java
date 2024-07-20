@@ -18,30 +18,30 @@ public class BermudaTriangle {
         return point.y == m * point.x + b;
     }
 
-    static Polygon resetWithRandomTriangle(Polygon polygon, int min, int max){
+    static Polygon resetWithRandomTriangle(Polygon polygon, int min, int max) {
         // Reset Polygon
         polygon.reset();
 
         double f;
-        int x , y;
+        int x, y;
 
-        for(int i = 0; i<3; i++){
+        for (int i = 0; i < 3; i++) {
             // Random x between [mix,max]
             f = Math.random() / Math.nextDown(1.0);
-            x =(int) Math.round(min * (1.0 - f) + max * f);
+            x = (int) Math.round(min * (1.0 - f) + max * f);
 
             // Random y between [mix,max]
-            f= Math.random()/Math.nextDown(1.0);
-            y =(int) Math.round(min * (1.0 - f) + max * f);
-            polygon.addPoint(x,y);
+            f = Math.random() / Math.nextDown(1.0);
+            y = (int) Math.round(min * (1.0 - f) + max * f);
+            polygon.addPoint(x, y);
         }
 
         return polygon;
     }
 
     // min and max for coordinates
-    static Polygon createRandomTriangle(int min, int max) {
-        Polygon triangle = new Polygon();
+    static Polygon createRandomTriangle() {
+       /* Polygon triangle = new Polygon();
         double f;
         int x,y;
 
@@ -55,7 +55,9 @@ public class BermudaTriangle {
             y =(int) Math.round(min * (1.0 - f) + max * f);
             triangle.addPoint(x,y);
         }
-        return triangle;
+        return triangle;*/
+
+        return resetWithRandomTriangle(new Polygon(), 0, 50);
     }
 
     public static void main(String[] args) {
@@ -92,7 +94,7 @@ public class BermudaTriangle {
         polygon.addPoint(p3.x, p3.y);
 
 
-        resetWithRandomTriangle(polygon,0,49);
+        resetWithRandomTriangle(polygon, 0, DIMENSION - 1);
 
         System.out.println("Enter ship's position x");
         int xShip = sc.nextInt();
@@ -102,12 +104,12 @@ public class BermudaTriangle {
 
         Point shipPosition = new Point(xShip, yShip);
 
-        for (int x = 0; x < 50; x++) {
-            for (int y = 0; y < 50; y++) {
+        for (int x = 0; x < DIMENSION; x++) {
+            for (int y = 0; y < DIMENSION; y++) {
 
-                if(x==shipPosition.x && y==shipPosition.y){
+                if (x == shipPosition.x && y == shipPosition.y) {
 
-                    if(polygon.contains(shipPosition)) {
+                    if (polygon.contains(shipPosition)) {
 
                         System.out.print(DEATH);
 
@@ -116,17 +118,13 @@ public class BermudaTriangle {
                         System.out.print(BOAT);
                     }
 
-                } else if (x == 0 || x == 49 || y == 0 || y == 49) {
+                } else if (x == 0 || x == DIMENSION - 1 || y == 0 || y == DIMENSION - 1) {
 
                     System.out.print(RAINBOW);
 
-                } else if (polygon.contains(new Point(x, y))) {
-
-                    System.out.print(OCTOPUS);
-
                 } else {
-
-                    System.out.print(FOG);
+                    // Interesting: We can use ternary operator inside sout
+                    System.out.print(polygon.contains(x, y) ? OCTOPUS : FOG);
                 }
 
             }
