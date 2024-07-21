@@ -26,34 +26,46 @@ public class FindNearestCinema {
     // Return the distance to the closest point to 0,0 and the point itself
     static Object[] minDistanceWithPoint(Point[] points, int size) {
 
-        // Class Point has a method to calculate distances
-        double distance;
+        try {
+            // Class Point has a method to calculate distances
+            double distance;
 
-        double minDistance = Point.distance(0, 0, points[0].x, points[0].y);
+            double minDistance = Point.distance(0, 0, points[0].x, points[0].y);
 
-        Point closerPoint = new Point();
+            Point closerPoint = new Point();
 
-        for (int i = 1; i < size; i++) {
-            distance = Point.distance(0, 0, points[i].x, points[i].y);
+            for (int i = 1; i < size; i++) {
+                try {
+                    distance = Point.distance(0, 0, points[i].x, points[i].y);
 
-            if (minDistance > distance) {
-                minDistance = distance;
-                closerPoint.setLocation(points[i].x, points[i].y);
+                    if (minDistance > distance) {
+                        minDistance = distance;
+                        closerPoint.setLocation(points[i].x, points[i].y);
+                    }
+                } catch (NullPointerException e) {
+                    System.err.println("Error: " + e.getMessage());
+
+                }
+
             }
 
+            //Object[] distanceAndPoint = {closerPoint, minDistance};
+            return new Object[]{closerPoint, minDistance};
+
+
+        } catch (NullPointerException e) {
+            System.err.println("Error: " + e.getMessage());
+
         }
-
-        //Object[] distanceAndPoint = {closerPoint, minDistance};
-
-        return new Object[]{closerPoint, minDistance};
+        return null;
     }
 
-    static Point[] randomPoints(int size){
+    static Point[] randomPoints(int size) {
         Random random = new Random();
 
         Point[] points = new Point[size];
 
-        for(int i = 0; i< size; i++){
+        for (int i = 0; i < size; i++) {
             points[i] = new Point(random.nextInt(100), random.nextInt(100));
         }
 
@@ -74,5 +86,16 @@ public class FindNearestCinema {
 
         System.out.println(minDistance(points2, points2.length));
         System.out.println(Arrays.toString(minDistanceWithPoint(points2, points2.length)));
+
+
+        System.out.println("---------------------");
+        System.out.println("Testing null exception");
+
+        Point[] pointsNull = null;
+
+        Point[] pointsNull1 = {new Point(1, 2), new Point(3, 6), null, new Point(45, 34)};
+
+        System.out.println(Arrays.toString(minDistanceWithPoint(pointsNull, 3)));
+        System.out.println(Arrays.toString(minDistanceWithPoint(pointsNull1, pointsNull1.length)));
     }
 }
