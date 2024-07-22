@@ -1,7 +1,4 @@
-package devs.fmm.arrays;
-
-import java.util.Arrays;
-import java.util.Random;
+package devs.fmm.arrays.enhancedforloop;
 
 public class DrawMountains {
 

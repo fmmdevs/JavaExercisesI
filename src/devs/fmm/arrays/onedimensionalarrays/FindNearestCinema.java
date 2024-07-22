@@ -1,4 +1,4 @@
-package devs.fmm.arrays;
+package devs.fmm.arrays.onedimensionalarrays;
 
 import java.awt.*;
 import java.util.Arrays;
