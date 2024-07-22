@@ -49,36 +49,15 @@ public class DrawMountains {
 
     }
 
-    // maxAltitude must be <= Math.floor(size/2)
-    /*private static int[] generateRandomAltitudes(int size, int maxAltitude) {
-        if(size<Math.floor((double) maxAltitude/2)) return null;
 
-        Random random = new Random();
-        int[] altitudes = new int[size];
-
-
-        altitudes[0] = 0;
-        for (int i = 1; i < size; i++) {
-            if (i <  maxAltitude) {
-                if (altitudes[i] > 0 && altitudes[i-1]<altitudes[i]) {
-                    altitudes[i] = altitudes[i-1];
-                } else {
-                    altitudes[i] = altitudes[i]+1;
-                }
-            } else {
-            }
-
-        }
-
-        return altitudes;
-    }*/
 
     public static void main(String[] args) {
         int[] altitudes = {0, 1, 1, 2, 2, 3, 3, 3, 4, 5, 4, 3, 2, 2, 1, 0};
         printMountain(altitudes);
+
         System.out.println("-----------------------------------------------------------------");
-       /* int[] randomAltitudes = generateRandomAltitudes(20,6);
-        System.out.println(Arrays.toString(randomAltitudes));
-        printMountain(randomAltitudes);*/
+
+        int[] altitudes1 = {0, 1, 2, 2, 2, 3, 3, 3, 4, 5, 6, 7, 8, 8, 8, 8, 9, 9, 9, 8, 8, 7, 7, 7, 6, 5, 4, 3, 3, 3, 2, 2, 2, 1, 1, 0};
+        printMountain(altitudes1);
     }
 }
