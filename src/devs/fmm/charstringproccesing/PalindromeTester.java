@@ -16,7 +16,7 @@ public class PalindromeTester {
     private static boolean isPalindromeIgnoringNonLettersAndDigits(String s) {
         for (int i = 0, j = s.length() - 1; i < Math.ceil((double) s.length() / 2); i++, j--) {
             if (!Character.isLetterOrDigit(s.charAt(i))) i++;
-            if(!Character.isLetterOrDigit(s.charAt(j))) j--;
+            if (!Character.isLetterOrDigit(s.charAt(j))) j--;
 
             if (s.charAt(i) != s.charAt(j)) return false;
         }
@@ -27,7 +27,7 @@ public class PalindromeTester {
         String sUpper = s.toUpperCase();
         for (int i = 0, j = sUpper.length() - 1; i < Math.ceil((double) sUpper.length() / 2); i++, j--) {
             if (!Character.isLetterOrDigit(sUpper.charAt(i))) i++;
-            if(!Character.isLetterOrDigit(sUpper.charAt(j))) j--;
+            if (!Character.isLetterOrDigit(sUpper.charAt(j))) j--;
 
             if (sUpper.charAt(i) != sUpper.charAt(j)) return false;
         }
