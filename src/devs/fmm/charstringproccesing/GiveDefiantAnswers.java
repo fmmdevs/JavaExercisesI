@@ -13,7 +13,8 @@ public class GiveDefiantAnswers {
 
         if (question.charAt(question.length() - 1) == '?') {
             System.out.println(question + noIdea);
-        } if("No idea!".equals(question)) {
+        }
+        if ("No idea!".equals(question)) {
             System.out.println("Aye!");
         }
     }
