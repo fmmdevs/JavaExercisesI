@@ -5,39 +5,45 @@ public class ConstrainLineBoundariesWrapLines {
 
         StringBuilder wrapped = new StringBuilder();
 
-        int indexLine = 0;
+        int index = 0;
+        // i: beginIndex . index
         for (int i = 0; i < string.length(); i += width) {
 
+            System.out.println(string.charAt(i) + " ");
             // last line
-            if(i>=string.length()){
-                wrapped.append(string, i,string.length());
-            }
-            // when char is not a space, we can't split the word.
-            if (string.charAt(i) != ' ') {
-                if(string.length()-i>=width){
-                    indexLine = string.substring(i, i+width).lastIndexOf(' ');
-                    wrapped.append(string, i , indexLine).append("\n");
-                    i= indexLine;
-                } else {
+            if (string.length() < i + width) {
 
-                }
+                wrapped.append(string, i, string.length());
 
             } else {
-                wrapped.append(string, i, i + width).append("\n");
+                // finding splitIndex
 
+                if (string.charAt(index + width) == ' ') {
+
+                    index = index + width;
+                } else {
+
+                    index = string.substring(i, index + width).lastIndexOf(' ');
+                }
+
+                wrapped.append(string, index, i);
+                i = index;
             }
 
 
-            // find last space index
-            //System.out.println(string.substring(i, i+width));
-
         }
+
+
+        // find last space index
+        //System.out.println(string.substring(i, i+width));
+
 
         return wrapped.toString();
     }
 
     public static void main(String[] args) {
         String s = "Live now; make now always the most precious time. " + "Now will never come again.";
-        System.out.println(wrap(s, 30));
+        System.out.println(s);
+        System.out.println(wrap(s, 10));
     }
 }
