@@ -28,7 +28,7 @@ public class ConstrainLineBoundariesWrapLines {
                     // lastIndex of a ' ' char in a specific line
                     lastIndex = i + string.substring(i, i + width).lastIndexOf(' ');
                     //System.out.println(i + " " + lastIndex);
-                    wrapped.append(string.substring( i, lastIndex).trim()).append("\n");
+                    wrapped.append(string.substring(i, lastIndex).trim()).append("\n");
                     i = lastIndex - width + 1;
                 }
 
