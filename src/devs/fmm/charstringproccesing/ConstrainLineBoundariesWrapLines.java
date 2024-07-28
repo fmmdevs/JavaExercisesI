@@ -5,29 +5,33 @@ public class ConstrainLineBoundariesWrapLines {
 
         StringBuilder wrapped = new StringBuilder();
 
-        int index = 0;
-        // i: beginIndex . index
-        for (int i = 0; i < string.length(); i += width) {
+        int lastIndex = 0;
+        // lastIndex -> where last line were split
+        for (int i = lastIndex; i < string.length(); i += width) {
 
-            System.out.println(string.charAt(i) + " ");
-            // last line
-            if (string.length() < i + width) {
+            // check if last line
+            if (string.length() <= i + width) {
 
                 wrapped.append(string, i, string.length());
 
             } else {
                 // finding splitIndex
 
-                if (string.charAt(index + width) == ' ') {
+                if (string.charAt(i + width) == ' ') {
 
-                    index = index + width;
+                    // System.out.println("espace " + i + " " + width);
+                    wrapped.append(string.substring(i, i + width).trim()).append("\n");
+
                 } else {
 
-                    index = string.substring(i, index + width).lastIndexOf(' ');
+                    //System.out.println("substring " + string.substring(i, i + width));
+                    // lastIndex of a ' ' char in a specific line
+                    lastIndex = i + string.substring(i, i + width).lastIndexOf(' ');
+                    //System.out.println(i + " " + lastIndex);
+                    wrapped.append(string.substring( i, lastIndex).trim()).append("\n");
+                    i = lastIndex - width + 1;
                 }
 
-                wrapped.append(string, index, i);
-                i = index;
             }
 
 
@@ -42,8 +46,8 @@ public class ConstrainLineBoundariesWrapLines {
     }
 
     public static void main(String[] args) {
-        String s = "Live now; make now always the most precious time. " + "Now will never come again.";
+        String s = "Live now; makes now always the most precious time. " + "Now will never come again.";
         System.out.println(s);
-        System.out.println(wrap(s, 10));
+        System.out.println(wrap(s, 30));
     }
 }
