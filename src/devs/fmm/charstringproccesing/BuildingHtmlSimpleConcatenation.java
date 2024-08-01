@@ -11,7 +11,7 @@ public class BuildingHtmlSimpleConcatenation {
 
             return "<" + tag + ">" + body + "</" + tag + ">";
 
-        } else if (body != null && (tag == null || tag.equals(""))) {
+        } else if (body != null && (tag == null || tag.isEmpty())) {
 
             return body;
 
