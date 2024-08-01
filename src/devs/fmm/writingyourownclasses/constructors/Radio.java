@@ -1,10 +1,10 @@
-package devs.fmm.writingyourownclasses.simpleenumerations;
+package devs.fmm.writingyourownclasses.constructors;
 
 public class Radio {
     private boolean isOn;
     private int volume;
     private double frequency;
-    private Modulation modulation;
+    private Modulation modulation = Modulation.FM;
 
     private final double MIN_AM_FREQUENCY = 148.5 * 1_000;
     private final double MAX_AM_FREQUENCY = 26.1 * 1_000_000;
@@ -15,6 +15,27 @@ public class Radio {
     // String or double? units?
     private double minFrequency;
     private double maxFrequency;
+
+    public Radio() {
+    }
+
+    public Radio(double frequency) {
+        this.frequency = frequency;
+    }
+
+    public Radio(String stationName) {
+        frequency = Radio.stationNameToFrequency(stationName);
+    }
+
+    // Copy Constructor
+    public Radio(Radio radio) {
+        this.volume=radio.volume;
+        this.frequency = radio.frequency;
+        this.modulation = radio.modulation;
+        this.isOn = radio.isOn;
+        this.minFrequency = radio.minFrequency;
+        this.maxFrequency = radio.maxFrequency;
+    }
 
 
     public Modulation getModulation() {
@@ -69,13 +90,14 @@ public class Radio {
     private boolean isOn() {
         return isOn;
     }
+
     static double stationNameToFrequency(String stationName) {
-        if(stationName==null) return 0;
+        if (stationName == null) return 0;
         return switch (stationName) {
             case "Walking the Plank" -> 98.3;
             case "Radio 3" -> 88.4;
             case "Radio Riel" -> 97.1;
-            case "Radio Clandestine"-> 77.7;
+            case "Radio Clandestine" -> 77.7;
             default -> 0;
         };
     }
