@@ -1,4 +1,4 @@
-package devs.fmm.writingyourownclasses.classdeclarationobjectproperties;
+package devs.fmm.writingyourownclasses.staticvariablesmethods;
 
 public class Application {
     public static void main(String[] args) {
@@ -15,5 +15,8 @@ public class Application {
         System.out.println(grandmasOldRadio);
         grandmasOldRadio.off();
         System.out.println(grandmasOldRadio);
+
+        System.out.println(Radio.stationNameToFrequency("Walking the Plank"));
+        System.out.println(Radio.stationNameToFrequency(null));
     }
 }

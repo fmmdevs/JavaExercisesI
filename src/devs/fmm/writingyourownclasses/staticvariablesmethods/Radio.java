@@ -1,4 +1,4 @@
-package devs.fmm.writingyourownclasses.classdeclarationobjectproperties;
+package devs.fmm.writingyourownclasses.staticvariablesmethods;
 
 public class Radio {
     private boolean isOn;
@@ -42,9 +42,20 @@ public class Radio {
         return isOn;
     }
 
+    static double stationNameToFrequency(String stationName) {
+        if(stationName==null) return 0;
+        return switch (stationName) {
+            case "Walking the Plank" -> 98.3;
+            case "Radio 3" -> 88.4;
+            case "Radio Riel" -> 97.1;
+            case "Radio Clandestine"-> 77.7;
+            default -> 0;
+        };
+    }
+
     @Override
     public String toString() {
 
-        return isOn() ? "Radio[volume=" + volume + ", frequency="+frequency+", is " + "on]" : "Radio[off]";
+        return isOn() ? "Radio[volume=" + volume + ", frequency=" + frequency + ", is " + "on]" : "Radio[off]";
     }
 }
