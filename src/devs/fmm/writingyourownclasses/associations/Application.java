@@ -12,5 +12,9 @@ public class Application {
         System.out.println(radio);
         System.out.println(radio2);
         System.out.println(radio3);
+
+        TV tv = new TV();
+        tv.on();
+        tv.off();
     }
 }
