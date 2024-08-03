@@ -3,18 +3,22 @@ package devs.fmm.writingyourownclasses.associations;
 public class Application {
     public static void main(String[] args) {
 
-        Radio radio = new Radio();
-        Radio radio2 = new Radio("Radio Clandestine");
-        Radio radio3 = new Radio(88.3);
-        radio.on();
-        radio2.on();
-        radio3.on();
-        System.out.println(radio);
-        System.out.println(radio2);
-        System.out.println(radio3);
+        Ship ship1 = new Ship();
+        Ship ship2 = new Ship();
 
-        TV tv = new TV();
-        tv.on();
-        tv.off();
+        ship1.load(new Radio(43.5));
+        ship1.load(new Radio(23.5));
+        ship1.load(new Radio(13.5));
+        ship1.load(new Radio(43.5));
+        ship1.load(new Radio(23.5));
+        ship1.load(new Radio(73.5));
+
+        ship2.load(new Radio(73.5));
+
+        System.out.println("Ship 1 has "+ ship1.countDevicesSwitchedOn() + " devices on");
+        System.out.println("Ship 2 has "+ ship2.countDevicesSwitchedOn() + " devices on");
+
+        System.out.println(ship2);
+        System.out.println(ship1);
     }
 }

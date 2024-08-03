@@ -21,6 +21,7 @@ public class Radio {
 
     public Radio(double frequency) {
         this.frequency = frequency;
+        this.isOn=true;
     }
 
     public Radio(String stationName) {
@@ -87,7 +88,7 @@ public class Radio {
     }
 
     // naming convention for booleans getters
-    private boolean isOn() {
+    public boolean isOn() {
         return isOn;
     }
 
