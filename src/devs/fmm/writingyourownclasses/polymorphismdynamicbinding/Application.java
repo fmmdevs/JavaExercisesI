@@ -1,6 +1,10 @@
 package devs.fmm.writingyourownclasses.polymorphismdynamicbinding;
 
 
+import devs.fmm.writingyourownclasses.abstractclassesabstractmethods.FreeDiskSpaceTimerTask;
+
+import java.util.Timer;
+
 public class Application {
     public static void main(String[] args) {
 
@@ -29,5 +33,16 @@ public class Application {
         ship.holiday();
 
         System.out.println(ship);
+
+        ship.printLoadList();
+        System.out.println("----------------");
+        ship.printLoadList1();
+
+        FreeDiskSpaceTimerTask timerTask = new FreeDiskSpaceTimerTask();
+
+
+        Timer timer = new Timer();
+
+        timer.scheduleAtFixedRate(timerTask,0,2000);
     }
 }
