@@ -29,5 +29,7 @@ public class Application {
         System.out.println("\nMost Power Consuming Electronic Device in the Ship:");
         System.out.println(ship.findMostPowerConsumingElectronicDevice());
 
+        System.out.println("----------------");
+        System.out.println(ship);
     }
 }

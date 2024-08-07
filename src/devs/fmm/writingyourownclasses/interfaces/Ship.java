@@ -88,6 +88,8 @@ public class Ship {
         } else {
             electronicDevices.add(electronicDevice);
         }
+        ElectronicDeviceWattComparator comparator = new ElectronicDeviceWattComparator();
+        electronicDevices.sort(comparator);
     }
 
 
