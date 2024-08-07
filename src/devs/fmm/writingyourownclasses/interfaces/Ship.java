@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class Ship {
+
     public static class AsciiArt {
         public static final String RADIO = " .‑.\n|o.o|\n|:_:|";
         public static final String BIG_TV = """ 
@@ -45,6 +46,10 @@ public class Ship {
         return Collections.max(electronicDevices,comparator);
     }
 
+    public void removePowerConsumingElectronicDevices(){
+        IsElectronicDeviceAboveMaxPower predicate = new IsElectronicDeviceAboveMaxPower();
+        electronicDevices.removeIf(predicate);
+    }
     public void printLoadList(){
 
 

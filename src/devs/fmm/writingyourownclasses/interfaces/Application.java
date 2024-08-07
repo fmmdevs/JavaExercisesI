@@ -38,5 +38,9 @@ public class Application {
         System.out.printf( "1km = %d km, %d m%n", oneKm.kilometer(), oneKm.meter() );
         Distance moreMeter = Distance.ofMeter( 12345 );
         System.out.printf( "12345m = %d km, %d m", moreMeter.kilometer(), moreMeter. meter() );
+
+
+        ship.removePowerConsumingElectronicDevices();
+        System.out.println(ship);
     }
 }
