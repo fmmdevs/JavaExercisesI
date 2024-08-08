@@ -3,9 +3,11 @@ package devs.fmm.writingyourownclasses.interfaces;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.function.Predicate;
 
 public class Ship {
 
+    private final static int MAXIMUM_POWER_CONSUMPTION = 300;
     public static class AsciiArt {
         public static final String RADIO = " .‑.\n|o.o|\n|:_:|";
         public static final String BIG_TV = """ 
@@ -47,8 +49,15 @@ public class Ship {
     }
 
     public void removePowerConsumingElectronicDevices(){
-        IsElectronicDeviceAboveMaxPower predicate = new IsElectronicDeviceAboveMaxPower();
-        electronicDevices.removeIf(predicate);
+        //IsElectronicDeviceAboveMaxPower predicate = new IsElectronicDeviceAboveMaxPower();
+        class IsElectronicDeviceAboveMaxPower implements Predicate<ElectronicDevice>{
+
+            @Override
+            public boolean test(ElectronicDevice electronicDevice) {
+                return electronicDevice.getWattage()>MAXIMUM_POWER_CONSUMPTION;
+            }
+        }
+        electronicDevices.removeIf(new IsElectronicDeviceAboveMaxPower());
     }
     public void printLoadList(){
 
