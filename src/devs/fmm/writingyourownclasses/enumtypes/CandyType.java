@@ -51,14 +51,14 @@ public enum CandyType {
     static CandyType random(){
         // We use Random to generate a int between 0 and the length of the array with the values of CandyType
         Random random = new Random();
+
+        // Math.random() * values().length
         int randomInt = random.nextInt(CandyType.values().length);
         return CandyType.values()[randomInt];
 
     }
 
-    private void addictiveQuality(){
 
-    }
 
     public static void main(String[] args) {
 
