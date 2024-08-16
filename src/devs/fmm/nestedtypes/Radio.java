@@ -1,12 +1,21 @@
 package devs.fmm.nestedtypes;
 
-//import devs.fmm.writingyourownclasses.associations.Modulation;
-import devs.fmm.writingyourownclasses.interfaces.ElectronicDevice;
+import java.util.Comparator;
 
 public class Radio extends ElectronicDevice {
     private int volume;
     private double frequency;
     private Modulation modulation = Modulation.FM;
+
+    // static nested class
+    public static class ElectronicDeviceWattComparator implements Comparator<ElectronicDevice> {
+
+
+        @Override
+        public int compare(ElectronicDevice o1, ElectronicDevice o2) {
+            return Integer.compare(o1.getWattage(),o2.getWattage());
+        }
+    }
 
      public enum Modulation{
         AM,
