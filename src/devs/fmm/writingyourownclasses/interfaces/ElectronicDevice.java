@@ -1,5 +1,7 @@
 package devs.fmm.writingyourownclasses.interfaces;
 
+import devs.fmm.exceptionhandling.writingyourownexceptionclasses.IllegalWattException;
+
 public class ElectronicDevice {
     protected boolean isOn;
     protected int wattage;
@@ -24,8 +26,12 @@ public class ElectronicDevice {
         return wattage;
     }
 
+    // Is not necessary the uso of throws for Unchecked exceptions (those that inherit from RuntimeException)
+    //
     public void setWattage(int wattage) {
+        if(wattage<=0) throw new IllegalWattException("Wattage must be bigger than 0");
         this.wattage = wattage;
+
     }
 
     // naming convention for booleans getters
