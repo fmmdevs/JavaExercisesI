@@ -3,8 +3,8 @@ package devs.fmm.exceptionhandling.catchingexceptions;
 import java.util.Arrays;
 
 public class ConvertStringArrayToIntArray {
-    static int[] parseInts(String... numbers){
-        if(numbers == null) throw new NullPointerException("The argument can't be null");
+    static int[] parseInts(String... numbers) throws Exception {
+        if(numbers == null) throw new Exception("The argument can't be null");
         int[] numbersInt = new int[numbers.length];
 
         for(int i = 0; i<numbersInt.length; i++){
@@ -20,13 +20,23 @@ public class ConvertStringArrayToIntArray {
     }
 
     public static void main(String[] args) {
-        int[] ints = parseInts("123","123333","1111","34234", null, "666","Hola", "7777");
-        System.out.println(Arrays.toString(ints));
+
 
         try {
             parseInts(null);
-        } catch (NullPointerException e) {
+            int[] ints = parseInts("123","123333","1111","34234", null, "666","Hola", "7777");
+            System.out.println(Arrays.toString(ints));
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+
+
+        try {
+            int[] ints = parseInts("123","123333","1111","34234", null, "666","Hola", "7777");
+            System.out.println(Arrays.toString(ints));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
     }
 }
