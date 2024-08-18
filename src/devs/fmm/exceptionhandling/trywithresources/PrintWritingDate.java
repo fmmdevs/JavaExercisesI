@@ -9,12 +9,13 @@ public class PrintWritingDate {
         try (
                 FileWriter fileWriter = new FileWriter(filePath, true);
                 PrintWriter writer = new PrintWriter(fileWriter);) {
+
             String today = LocalDateTime.now().toString();
             System.out.println(today);
-            writer.write("\n"+today);
+            writer.write("\n" + today);
         } catch (FileNotFoundException e) {
             System.out.println(e);
-        } catch (IOException e){
+        } catch (IOException e) {
             System.out.println(e);
         }
     }
