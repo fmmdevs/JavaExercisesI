@@ -93,6 +93,22 @@ public class Heroes {
         System.out.println(allHeroes);
 
 
+        // Concatenate Hero Comparators
+
+        Comparator<Hero> heroComparatorByName = (hero1,hero2)->hero1.name().compareTo(hero2.name());
+        System.out.println("-------------------");
+        allHeroes.sort(heroComparatorByName);
+        System.out.println(allHeroes);
+
+        Comparator<Hero> heroComparatorByYear = (hero1, hero2) -> Integer.compare(hero1.yearFirstAppearance(), hero2.yearFirstAppearance());
+        allHeroes.sort(heroComparatorByYear);
+        System.out.println(allHeroes);
+
+        // Here
+        allHeroes.sort(heroComparatorByYear.thenComparing(heroComparatorByName));
+        System.out.println(allHeroes);
+
+
     }
 
 }
