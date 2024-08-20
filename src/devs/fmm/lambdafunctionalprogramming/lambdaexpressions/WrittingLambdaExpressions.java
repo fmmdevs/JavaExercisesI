@@ -4,10 +4,10 @@ import devs.fmm.writingyourownclasses.interfaces.*;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.function.Consumer;
-import java.util.function.Supplier;
+import java.util.function.*;
 
 public class WrittingLambdaExpressions {
     public static void main(String[] args) {
@@ -46,5 +46,16 @@ public class WrittingLambdaExpressions {
 
         Comparator<Rectangle> rectangleComparator = Comparator.comparingDouble(Rectangle::getHeight);
 
+
+        // Developing Lambda Expressions
+
+        // interface DoubleSupplier { double getAsDouble(); }
+        DoubleSupplier ds = () -> (double) LocalDateTime.now().getNano() / 10000;
+
+        // interface LongToDoubleFunction { double applyAsDouble(long value); }
+        LongToDoubleFunction ltdf = longNumber -> (double) longNumber;
+
+        // interface UnaryOperator<T {  Function.apply(T t); }
+        UnaryOperator<String> up = string -> string.substring(string.length()-2).toUpperCase();
     }
 }
