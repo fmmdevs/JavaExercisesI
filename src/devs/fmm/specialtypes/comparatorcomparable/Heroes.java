@@ -95,7 +95,7 @@ public class Heroes {
 
         // Concatenate Hero Comparators
 
-        Comparator<Hero> heroComparatorByName = (hero1,hero2)->hero1.name().compareTo(hero2.name());
+        Comparator<Hero> heroComparatorByName = (hero1, hero2) -> hero1.name().compareTo(hero2.name());
         System.out.println("-------------------");
         allHeroes.sort(heroComparatorByName);
         System.out.println(allHeroes);
@@ -108,6 +108,31 @@ public class Heroes {
         allHeroes.sort(heroComparatorByYear.thenComparing(heroComparatorByName));
         System.out.println(allHeroes);
 
+        // Using a Key Extractor to Easily Create a Comparator
+        System.out.println("-------------------");
+
+        // allHeroes.sort(Comparator.comparingInt(Hero::yearFirstAppearance).reversed());
+        allHeroes.sort(Comparator.comparingInt(a -> a.yearFirstAppearance()));
+
+        System.out.println(allHeroes);
+
+        //allHeroes.sort(Comparator.comparing(Hero::name));
+        Comparator<Hero> nameComparator = Comparator.comparing((h -> h.name()));
+        allHeroes.sort(nameComparator);
+        System.out.println(allHeroes);
+
+        //allHeroes.sort(Comparator.comparing(Hero::name).thenComparingInt(Hero::yearFirstAppearance));
+        Comparator<Hero> yearComparator = Comparator.comparingInt(h -> h.yearFirstAppearance());
+
+        Comparator<Hero> combinedComparator = yearComparator.thenComparing(nameComparator);
+
+        Comparator<Hero> combinedComparator2 = nameComparator.thenComparingInt(h -> h.yearFirstAppearance());
+
+
+        //Comparator<Hero> caseInsensitiveOrder = (hero1, hero2) -> String.CASE_INSENSITIVE_ORDER.compare(hero1.name(), hero2.name());
+        Comparator<Hero> caseInsensitiveName = Comparator.comparing(h -> h.name(), String.CASE_INSENSITIVE_ORDER);
+
+        allHeroes.sort(caseInsensitiveName);
 
     }
 
